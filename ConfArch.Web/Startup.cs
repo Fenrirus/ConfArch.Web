@@ -1,7 +1,5 @@
 using ConfArch.Data;
 using ConfArch.Data.Repositories;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -46,12 +44,14 @@ namespace ConfArch.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Conference}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(o => o.Filters.Add(new AuthorizeFilter()));
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddScoped<IConferenceRepository, ConferenceRepository>();
             services.AddScoped<IProposalRepository, ProposalRepository>();
             services.AddScoped<IAttendeeRepository, AttendeeRepository>();
