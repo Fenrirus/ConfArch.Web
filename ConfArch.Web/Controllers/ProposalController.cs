@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using ConfArch.Data.Models;
 using ConfArch.Data.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfArch.Web.Controllers
